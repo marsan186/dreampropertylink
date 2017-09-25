@@ -2,7 +2,21 @@ var Sequelize = require('sequelize');
 var bcrypt = require('bcrypt');
 
 // create a sequelize instance with our local postgres database information.
-var sequelize = new Sequelize('postgres://postgres@localhost:5432/auth-system');
+// var sequelize = new Sequelize('postgres://postgres@localhost:5432/auth-system');
+
+var sequelize = new Sequelize('testlogin', 'root', '', {
+    host: 'localhost',
+    port: 3306,
+    dialect: 'mysql'
+});
+
+/* sequelize.authenticate().complete(function (err) {
+    if (err) {
+       console.log('There is connection in ERROR');
+    } else {
+       console.log('Connection has been established successfully');
+    }
+   }); */
 
 // setup User model and its fields.
 var User = sequelize.define('users', {
